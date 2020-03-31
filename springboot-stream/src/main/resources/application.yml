@@ -3,9 +3,10 @@ server:
 
 spring:
   rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: admin
-    password: 12345678
+#    host: 127.0.0.1
+#    port: 5672
+#    username: admin
+#    password: 12345678
+    addresses: amqp://admin:12345678@127.0.0.1:5672
     publisher-confirm-type: correlated
     publisher-returns: true
