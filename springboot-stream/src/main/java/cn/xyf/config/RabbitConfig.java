@@ -1,10 +1,7 @@
 package cn.xyf.config;
 
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,12 +26,38 @@ public class RabbitConfig {
     }
 
     @Bean
-    public Binding binding() {
-        return BindingBuilder.bind(queue()).to(topicExchange()).with("key.1");
+    public Binding binding(Queue queue, TopicExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(DEFAULT_ROUTING_KEY);
     }
 
     @Bean
-    Binding binding1() {
-        return BindingBuilder.bind(queue1()).to(topicExchange()).with("key.#");
+    public Binding binding1(Queue queue1, TopicExchange exchange) {
+        return BindingBuilder.bind(queue1).to(exchange).with(ROUTING_KEY1);
+    }
+
+    @Bean
+    public Queue fanoutQueue1() {
+        return new Queue(FANPUT_QUEUE1, true);
+    }
+
+    @Bean
+    public Queue fanoutQueue2() {
+        return new Queue(FANPUT_QUEUE2, true);
+    }
+
+
+    @Bean
+    public FanoutExchange fanoutExchange() {
+        return new FanoutExchange(FANOUT_EXCHANGE);
+    }
+
+    @Bean
+    public Binding bindingExchange1(Queue fanoutQueue1, FanoutExchange exchange) {
+        return BindingBuilder.bind(fanoutQueue1).to(exchange);
+    }
+
+    @Bean
+    public Binding bindingExchange2(Queue fanoutQueue2, FanoutExchange exchange) {
+        return BindingBuilder.bind(fanoutQueue2).to(exchange);
     }
 }

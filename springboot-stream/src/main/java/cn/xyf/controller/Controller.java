@@ -1,10 +1,9 @@
 package cn.xyf.controller;
 
+import cn.xyf.pojo.Message;
 import cn.xyf.service.SenderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/rabbit")
@@ -16,9 +15,28 @@ public class Controller {
         this.senderService = senderService;
     }
 
-    @RequestMapping("/send/{msg}")
+    @GetMapping("/send/{msg}")
     public String send(@PathVariable("msg") String msg) {
         senderService.send(msg);
         return "OK";
+    }
+
+    @PostMapping("/sendMsg")
+    public String sendMsg(@RequestBody Message msg) {
+        System.out.println(msg);
+        senderService.sendMessage(msg);
+        return msg.getTitle();
+    }
+
+    @PostMapping("/sendMsg1")
+    public String sendMsg1(@RequestBody Message msg) {
+        senderService.sendMessage1(msg);
+        return msg.getTitle();
+    }
+
+    @PostMapping("/sendMsgFanout")
+    public String sendMsgFanout(@RequestBody Message msg) {
+        senderService.sendMessageFanout(msg);
+        return msg.getTitle();
     }
 }
