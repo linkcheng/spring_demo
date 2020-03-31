@@ -10,6 +10,6 @@ public final class Constants {
     public static final String ROUTING_KEY1 = "key.1";
 
     public static final String FANOUT_EXCHANGE = "fanoutExchange";
-    public static final String FANPUT_QUEUE1 = "fanout.queue1";
-    public static final String FANPUT_QUEUE2 = "fanout.queue2";
+    public static final String FANOUT_QUEUE1 = "fanout.queue1";
+    public static final String FANOUT_QUEUE2 = "fanout.queue2";
 }

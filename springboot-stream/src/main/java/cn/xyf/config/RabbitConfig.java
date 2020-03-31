@@ -37,12 +37,12 @@ public class RabbitConfig {
 
     @Bean
     public Queue fanoutQueue1() {
-        return new Queue(FANPUT_QUEUE1, true);
+        return new Queue(FANOUT_QUEUE1, true);
     }
 
     @Bean
     public Queue fanoutQueue2() {
-        return new Queue(FANPUT_QUEUE2, true);
+        return new Queue(FANOUT_QUEUE2, true);
     }
 
 

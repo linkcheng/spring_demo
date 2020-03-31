@@ -7,3 +7,5 @@ spring:
     port: 5672
     username: admin
     password: 12345678
+    publisher-confirm-type: correlated
+    publisher-returns: true
