@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/rabbit")
-public class Controller {
+public class RabbitController {
     private SenderServiceImpl senderService;
 
     @Autowired
