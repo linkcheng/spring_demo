@@ -26,7 +26,8 @@ spring:
         linger.ms: 1
 
     consumer:
-      enable-auto-commit: false
+      auto-offset-reset: earliest
+      enable-auto-commit: true
       auto-commit-interval: 100ms
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
