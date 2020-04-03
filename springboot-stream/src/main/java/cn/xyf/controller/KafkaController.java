@@ -1,11 +1,9 @@
 package cn.xyf.controller;
 
+import cn.xyf.dto.KafkaMessage;
 import cn.xyf.service.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/kafka")
@@ -24,6 +22,12 @@ public class KafkaController {
     @GetMapping("/send/{topic}/{data}")
     public String send(@PathVariable("topic") String topic, @PathVariable("data") String data) {
         kafkaService.sendMessage(topic, data);
+        return "OK";
+    }
+
+    @PostMapping("/sendMsg")
+    public String send(@RequestBody KafkaMessage msg) {
+        kafkaService.sendMessage(msg.getTopic(), msg.getContent());
         return "OK";
     }
 }

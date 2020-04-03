@@ -1,17 +1,10 @@
 package cn.xyf;
 
 import cn.xyf.config.MyMvcConfig;
-import cn.xyf.dao.DepartmentDao;
-import cn.xyf.pojo.Department;
-import cn.xyf.pojo.Employee;
-import cn.xyf.service.EmployeeService;
-import cn.xyf.service.EmployeeServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.servlet.LocaleResolver;
-
-import java.util.Collection;
 
 @SpringBootTest
 class SpringbootWeb2ApplicationTests {

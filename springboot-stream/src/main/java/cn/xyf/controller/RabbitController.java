@@ -1,6 +1,6 @@
 package cn.xyf.controller;
 
-import cn.xyf.pojo.RabbitMessage;
+import cn.xyf.dto.RabbitMessage;
 import cn.xyf.service.SenderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,18 +25,18 @@ public class RabbitController {
     public String sendMsg(@RequestBody RabbitMessage msg) {
         System.out.println(msg);
         senderService.sendMessage(msg);
-        return msg.getTitle();
+        return "OK";
     }
 
     @PostMapping("/sendMsg1")
     public String sendMsg1(@RequestBody RabbitMessage msg) {
         senderService.sendMessage1(msg);
-        return msg.getTitle();
+        return "OK";
     }
 
     @PostMapping("/sendMsgFanout")
     public String sendMsgFanout(@RequestBody RabbitMessage msg) {
         senderService.sendMessageFanout(msg);
-        return msg.getTitle();
+        return "OK";
     }
 }

@@ -1,7 +1,7 @@
 package cn.xyf.service;
 
 import cn.xyf.common.Constants;
-import cn.xyf.pojo.RabbitMessage;
+import cn.xyf.dto.RabbitMessage;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 

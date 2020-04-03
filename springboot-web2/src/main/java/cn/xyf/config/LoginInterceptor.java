@@ -10,8 +10,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-
-        if(session.getAttribute("session_id") != null) {
+        if((session.getAttribute("session_id") != null) || (request.getRequestURI().startsWith("/remote"))) {
             return true;
         } else {
             request.setAttribute("msg", "没有权限，请先登录");

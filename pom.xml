@@ -14,9 +14,16 @@
         <module>juc-demo</module>
         <module>spring-ioc2</module>
         <module>spring-aop2</module>
+        <module>springboot-common</module>
+        <module>springboot-web2</module>
     </modules>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
         <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
@@ -35,10 +42,6 @@
         <springboot.version>2.2.5.RELEASE</springboot.version>
 
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
-
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -124,6 +127,15 @@
             </dependency>
 
             <!--springboot-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <!--scope 为 runtime 时，汇报很奇怪的错误-->
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
@@ -214,7 +226,6 @@
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
                 <filtering>true</filtering>
