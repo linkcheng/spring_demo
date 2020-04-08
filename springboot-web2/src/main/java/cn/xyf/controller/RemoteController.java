@@ -5,8 +5,6 @@ import cn.xyf.dto.CommonResult;
 import cn.xyf.dto.KafkaMessage;
 import cn.xyf.dto.RabbitMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
