@@ -1,6 +1,6 @@
 package cn.xyf;
 
-import cn.xyf.service.StarUserServiceImpl;
+//import cn.xyf.service.StarUserServiceImpl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.log4j.Log4j2;
@@ -28,7 +28,7 @@ class JucDemoApplicationTests {
     private static final String COMPLEX_JSON_STR = "{\"teacherName\":\"crystall\",\"teacherAge\":27,\"course\":{\"courseName\":\"english\",\"code\":1270},\"students\":[{\"studentName\":\"lily\",\"studentAge\":12},{\"studentName\":\"lucy\",\"studentAge\":15}]}";
 
     @Autowired
-    StarUserServiceImpl starUserServiceImpl;
+//    StarUserServiceImpl starUserServiceImpl;
 
     @Test
     void contextLoads() {
@@ -55,8 +55,8 @@ class JucDemoApplicationTests {
         updateContext(jsonObject, eleIds, eles);
         log.info(jsonObject.toJSONString());
 
-        Integer age1 = ReflectionTestUtils.invokeMethod(starUserServiceImpl, "parseJsonObject", jsonObject, "studentAge", Integer.class);
-        log.info(age1);
+//        Integer age1 = ReflectionTestUtils.invokeMethod(starUserServiceImpl, "parseJsonObject", jsonObject, "studentAge", Integer.class);
+//        log.info(age1);
     }
 
     private <T> T parseJsonObject(JSONObject params, String key, Class<T> cls) {

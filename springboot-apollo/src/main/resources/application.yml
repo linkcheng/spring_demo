@@ -1,0 +1,8 @@
+spring.application.name: data-transfer-server
+
+apollo.bootstrap.enabled: true
+
+server:
+  port: 18080
+
+
