@@ -1,12 +1,14 @@
 package cn.xyf.algorithm;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
  * 二叉搜索树增查删
  */
+@SuppressWarnings("all")
 public class BinarySearchTree {
-    static class Node{
+    public static class Node{
         int data;
         Node left;
         Node right;
@@ -102,7 +104,7 @@ public class BinarySearchTree {
     /**
      * 打印树
      */
-    public void print(Node root) {
+    public static void print(Node root) {
         if (root == null) {
             return;
         }
@@ -123,6 +125,90 @@ public class BinarySearchTree {
         System.out.println();
     }
 
+    /**
+     * 通过后续遍历得到的数组 array ，重构 bst
+     * @param array 后续遍历得到的数组
+     * @return 树的头结点
+     */
+    public static Node postArrayToBST(int[] array) {
+        return build(array, 0, array.length - 1);
+    }
+
+    /**
+     * 通过后续遍历得到的数组 array ，重构 bst
+     * @param array 后续遍历得到的数组
+     * @return 树的头结点
+     */
+    public static Node build(int[] array, int left, int right) {
+        if (array == null || array.length == 0 || left > right) {
+            return null;
+        }
+
+        // left <= right
+        Node head = new Node(array[right]);
+
+        // right == left 有且仅有一个数
+        if (right == left) {
+            return head;
+        }
+
+        // left < right
+        int pos = - 1;
+        // 在 [left...right-1] 范围找切分点, 从左到右，找到最后一个比right小的地方位置
+//        pos = search(array, left, right-1, array[right]);
+
+        // 在 [left...right-1] 范围找切分点, 从左到右，找到最后一个比right小的地方位置
+        // 二分查找
+        pos = binarySearch(array, left, right-1, array[right]);
+
+        head.left = build(array, left, pos);
+        head.right = build(array, pos+1, right-1);
+        return head;
+    }
+
+    /**
+     * 在 array 中 left 到 right 范围找到最右端比 key 小的值
+     * @param array 不完全有序数组
+     * @param key
+     * @return
+     * 时间复杂度 O(n)
+     */
+    public static int search(int[] array, int left, int right, int key) {
+        int pos = left - 1;
+
+        // 在 [left...right-1] 范围找切分点, 从左到右，找到最后一个比right小的地方位置
+        for (int i=left; i<right; i++) {
+            if(array[i] < array[right]) {
+                pos = i;
+            }
+        }
+        return pos;
+    }
+
+    /**
+     * 在 array 中 left 到 right 范围找到最右端比 key 小的值
+     * @param array 不完全有序数组
+     * @param key
+     * @return
+     * 时间复杂度 O(log n)
+     */
+    private static int binarySearch(int[] array, int left, int right, int key) {
+        int pos = left - 1;
+
+        // 在 [left...right-1] 范围找切分点, 从左到右，找到最后一个比right小的地方位置
+        while (left <= right) {
+            int mid = left + ((right - left)>>1);
+            if (array[mid] < array[right]) {
+                pos = mid;
+                left = mid + 1;
+            } else {
+                right = mid -1;
+            }
+        }
+
+        return pos;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
         Node root = new Node(10);
@@ -134,12 +220,21 @@ public class BinarySearchTree {
         tree.insert(root, 7);
         tree.insert(root, 2);
 
-        tree.print(root);
+        BinarySearchTree.print(root);
 
 //        System.out.println(tree.getMin(root).data);
 //        System.out.println(tree.getMax(root).data);
 
         tree.delete(root, 16);
-        tree.print(root);
+        BinarySearchTree.print(root);
+
+//        int[] array = {2, 4, 3, 6, 8, 7, 5};
+//        int[] array = {1, 3, 2, 4, 5};
+        int[] array = {1, 2, 3, 4, 5};
+//        int[] array = {3, 2, 1};
+        System.out.println(Arrays.toString(array));
+        Node build = BinarySearchTree.postArrayToBST(array);
+        System.out.println(build.data);
+        BinarySearchTree.print(build);
     }
 }
