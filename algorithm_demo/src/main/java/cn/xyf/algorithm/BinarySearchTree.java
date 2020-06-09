@@ -76,7 +76,7 @@ public class BinarySearchTree {
     }
 
     /**
-     * 删除
+     * 删除，返回新树的头结点
      */
     public Node delete(Node root, int key) {
         if (root == null) {
@@ -220,21 +220,21 @@ public class BinarySearchTree {
         tree.insert(root, 7);
         tree.insert(root, 2);
 
-        BinarySearchTree.print(root);
+//        BinarySearchTree.print(root);
 
 //        System.out.println(tree.getMin(root).data);
 //        System.out.println(tree.getMax(root).data);
 
-        tree.delete(root, 16);
-        BinarySearchTree.print(root);
+        Node delete = tree.delete(root, 16);
+        BinarySearchTree.print(delete);
 
 //        int[] array = {2, 4, 3, 6, 8, 7, 5};
 //        int[] array = {1, 3, 2, 4, 5};
-        int[] array = {1, 2, 3, 4, 5};
+//        int[] array = {1, 2, 3, 4, 5};
 //        int[] array = {3, 2, 1};
-        System.out.println(Arrays.toString(array));
-        Node build = BinarySearchTree.postArrayToBST(array);
-        System.out.println(build.data);
-        BinarySearchTree.print(build);
+//        System.out.println(Arrays.toString(array));
+//        Node build = BinarySearchTree.postArrayToBST(array);
+//        System.out.println(build.data);
+//        BinarySearchTree.print(build);
     }
 }
