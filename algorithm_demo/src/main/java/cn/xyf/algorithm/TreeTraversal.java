@@ -193,7 +193,7 @@ public class TreeTraversal {
 
         while (cur != null) {
             if (cur.left == null) {
-                System.out.print(cur.value+", ");
+                System.out.print(cur.value+" ");
                 cur = cur.right;
             } else {
                 prev = cur.left;
@@ -205,12 +205,12 @@ public class TreeTraversal {
                      cur = cur.left;
                 } else {                      // 2.b)
                     prev.right = null;
-                    System.out.print(cur.value+", ");
+                    System.out.print(cur.value+" ");
                     cur = cur.right;
                 }
             }
-
         }
+        System.out.println();
 
     }
 
@@ -345,6 +345,9 @@ public class TreeTraversal {
         System.out.println();
         tt.postOrderNonRecur2(head);
         System.out.println();
+
+        System.out.println("============morris=============");
+        tt.morrisInOrderTree(head);
 
         // serial
         System.out.println("============serial in pre order=============");
