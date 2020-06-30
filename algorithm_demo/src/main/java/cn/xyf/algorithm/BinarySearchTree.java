@@ -3,6 +3,10 @@ package cn.xyf.algorithm;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+class MyClassLoader extends ClassLoader {
+
+}
+
 /**
  * 二叉搜索树增查删
  */

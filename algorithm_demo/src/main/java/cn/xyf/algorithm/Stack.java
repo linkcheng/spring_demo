@@ -1,5 +1,11 @@
 package cn.xyf.algorithm;
 
+import org.checkerframework.checker.units.qual.K;
+
+import java.util.Comparator;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 /**
  * 栈
  */
@@ -7,6 +13,7 @@ public class Stack {
     private Integer[] arr;
     // 可以写入数据的位置
     private Integer index;
+    SortedMap<String, Integer> map = new TreeMap<>();
 
     public Stack(int size) {
         if(size<0) {

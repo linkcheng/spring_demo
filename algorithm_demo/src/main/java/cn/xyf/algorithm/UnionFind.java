@@ -42,11 +42,10 @@ public class UnionFind<T> {
      */
     public T findRep(T node) {
         T parent = parentMap.get(node);
-        T rep = parent;
         if(parent != node) {
-            rep = findRep(parent);
+            parent = findRep(parent);
         }
-        parentMap.put(node, rep);
+        parentMap.put(node, parent);
         return parent;
     }
 
