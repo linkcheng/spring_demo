@@ -28,6 +28,8 @@ dependency-reduced-pom.xml
 *.ipr 
 *.iws 
 *.idea
+*.vscode
+*.factorypath
 *.log
 
 dump.rdb
